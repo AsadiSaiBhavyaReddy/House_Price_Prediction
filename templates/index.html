@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMS PROJECT</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: darkred;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+        nav {
+            background-color: #f4f4f4;
+            padding: 10px 0;
+            text-align: center;
+        }
+        nav a {
+            margin-right: 20px;
+            color: #333;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        nav a:hover {
+            color: #555;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+        /* Add specific styling for the index page container */
+        .index-container {
+            background-image: url('https://miro.medium.com/v2/resize:fit:1024/1*5lksNVWUW8prwtwOAiq1pQ.jpeg');
+            background-size: 100% 100%; /* Cover the entire container without distortion */
+            background-position: center; /* Center the background image */
+            width: 100%; /* Set width to 100% of the container */
+            height: 400px; /* Set height to a specific value */
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>House Price Prediction</h1>
+</header>
+
+<nav>
+    <a href="{% url 'home' %}">Home</a>
+    <a href="{% url 'about' %}">About Project</a>
+    <a href="{% url 'predict_price' %}">Predict-Price</a>
+    <a href="{% url 'contactus' %}">Contact Us</a>
+</nav>
+
+<!-- Add the specific class to the index page container -->
+<div class="container index-container">
+    {% block body %}
+    <h2</h2>
+    <p></p>
+    {% endblock %}
+</div>
+
+</body>
+</html>

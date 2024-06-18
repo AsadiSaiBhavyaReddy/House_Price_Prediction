@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>House Price Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: darkred;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #8b0000;
+        }
+        h1 {
+            text-align: center; /* Center-align the text */
+        }
+        h2 {
+            text-align: center; /* Center-align the text */
+        }
+         body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+        h1, p {
+            margin-bottom: 20px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+        .back-link a {
+            color: darkred;
+            text-decoration: none;
+        }
+        .back-link a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+<header style="background-color: darkred; color: #fff; padding: 10px 0; text-align: center;">
+    <h1>House Price Prediction</h1>
+</header>
+
+<div class="container">
+    <!-- Back to Home button -->
+    <div class="back-link">
+        <a href="index.html">Back to Home</a>
+    </div>
+<div class="container">
+    <form method="post" action="{% url 'predict_price' %}">
+        {% csrf_token %}
+        <label for="area">Area (in sq. ft.):</label>
+        <input type="number" id="area" name="area" required>
+
+        <label for="bedrooms">Bedrooms:</label>
+        <input type="number" id="bedrooms" name="bedrooms" required>
+
+        <label for="bathrooms">Bathrooms:</label>
+        <input type="number" id="bathrooms" name="bathrooms" required>
+
+        <label for="stories">Stories:</label>
+        <input type="number" id="stories" name="stories" required>
+
+        <label for="guestroom">Guestroom:</label>
+        <select id="guestroom" name="guestroom" required>
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </select>
+
+        <label for="parking">Parking Spaces:</label>
+        <input type="number" id="parking" name="parking" required>
+
+        <button type="submit">Predict Price</button>
+    </form>
+
+    {% if predicted_price %}
+    <h2>Predicted Price: ₹{{ predicted_price|floatformat:"2" }}</h2>
+    {% endif %}
+
+    {% if graph_path %}
+    <img src="{{ graph_path }}" alt="Price Prediction Graph">
+    {% endif %}
+</div>
+
+</body>
+</html>
